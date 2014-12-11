@@ -20,10 +20,10 @@ bool checkSameLine(int field1[], int field2[]) {
 int main() {
     int field1[2];
     int field2[2];
-    field1[0] = takeInput("field1 position x from 1 to 7");
-    field1[1] = takeInput("field1 position y");
-    field2[0] = takeInput("field2 position x");
-    field2[1] = takeInput("field2 position y");
+    field1[0] = takeInput("field 1 position x from 1 to 7");
+    field1[1] = takeInput("field 1 position y from 1 to 7");
+    field2[0] = takeInput("field 2 position x from 1 to 7");
+    field2[1] = takeInput("field 2 position y from 1 to 7");
     if (checkSameLine(field1, field2)) {
         cout << "yes, it can" << endl;
     } else {
