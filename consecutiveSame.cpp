@@ -5,10 +5,8 @@ using namespace std;
 
 int takeInput(string varName) {
     int input;
-    do {
-        cout << "Enter " << varName << ":\n";
-        cin >> input;
-    } while (input < 0);
+    cout << "Enter " << varName << ":\n";
+    cin >> input;
     return input;
 }
 
@@ -32,6 +30,9 @@ bool hasConsecutiveSameNumbers(int array[], int dimension) {
 
 int main() {
     int dimension = takeInput("dimension");
+    do {
+        dimension = takeInput("dimension");
+    } while (dimension < 0);
     int array[dimension];
 
     fillArray(array, dimension);
