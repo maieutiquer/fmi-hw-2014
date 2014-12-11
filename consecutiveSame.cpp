@@ -10,6 +10,14 @@ int takeInput(string varName) {
     return input;
 }
 
+int takeDimension() {
+    int dimension;
+    do {
+        dimension = takeInput("dimension");
+    } while (dimension < 0);
+    return dimension;
+}
+
 void fillArray(int array[], int dimension) {
     for (int i = 0; i < dimension; i++) {
         array[i] = takeInput("array[" + to_string(i) + "]");
@@ -29,10 +37,7 @@ bool hasConsecutiveSameNumbers(int array[], int dimension) {
 }
 
 int main() {
-    int dimension = takeInput("dimension");
-    do {
-        dimension = takeInput("dimension");
-    } while (dimension < 0);
+    int dimension = takeDimension();
     int array[dimension];
 
     fillArray(array, dimension);
