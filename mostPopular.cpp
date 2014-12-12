@@ -54,6 +54,18 @@ int findMostPopular(int array[], int dimension) {
     return mostPopular;
 }
 
+bool hasEvenNumberOfDigits(int number) {
+    return (to_string(number).size() % 2 == 0);
+}
+
+void printNumbersWithEvenNumberOfDigits(int array[], int dimension) {
+    for (int i = dimension - 1; i >= 0; i--) {
+        if (hasEvenNumberOfDigits(array[i])) {
+            cout << array[i] << endl;
+        }
+    }
+}
+
 int main() {
     int mostPopular;
     int dimension = takeDimension();
@@ -63,5 +75,8 @@ int main() {
 
     mostPopular = findMostPopular(array, dimension);
 
-    cout << mostPopular << endl;
+    cout << "Most popular: " << mostPopular << endl;
+
+    cout << "Numbers with even number of digits: " << endl;
+    printNumbersWithEvenNumberOfDigits(array, dimension);
 }
