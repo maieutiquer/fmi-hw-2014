@@ -34,7 +34,6 @@ int countOccurences(int number, int array[], int dimension) {
     return counter;
 }
 
-// TODO: if equally most popular, then return least value
 int findMostPopular(int array[], int dimension) {
     int mostPopular = 0;
     int mostOccurences = 0;
