@@ -16,6 +16,7 @@ bool hasExactlyThreeDigits(int number) {
 bool hasZero(int number) {
     string numberAsString = to_string(number);
     int numberLength = numberAsString.length();
+
     for (int i = 0; i < numberLength; i++) {
         if (numberAsString[i] == '0') {
             return true;
@@ -30,6 +31,7 @@ bool hasZero(int number) {
 bool multipleOfOwnDigits(int number) {
     string numberAsString = to_string(number);
     int numberLength = numberAsString.length();
+
     for (int i = 0; i < numberLength; i++) {
         if (number % (numberAsString[i] - '0') != 0) {
             return false;
@@ -42,6 +44,7 @@ int sumOfDigits(int number) {
     string numberAsString = to_string(number);
     int numberLength = numberAsString.length();
     int sum = 0;
+
     for (int i = 0; i < numberLength; i++) {
         sum += numberAsString[i] - '0';
     }
@@ -52,6 +55,7 @@ int productOfDigits(int number) {
     string numberAsString = to_string(number);
     int numberLength = numberAsString.length();
     int product = 1;
+
     for (int i = 0; i < numberLength; i++) {
         product *= numberAsString[i] - '0';
     }
@@ -66,6 +70,7 @@ int takeInput(string varName) {
 }
 
 int main() {
+
     int number;
     do {
         number = takeInput("a three-digit number that has no zero in its digits");
@@ -77,5 +82,4 @@ int main() {
         cout << "no " << productOfDigits(number) << "\n";
     }
 
-    return 0;
 }

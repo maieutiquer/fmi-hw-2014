@@ -10,6 +10,7 @@ int takeInput(string varName) {
 }
 
 string pronounce(int number) {
+
     string numberAsString = to_string(number);
     string pronunciation = "";
     string space = " ";
@@ -20,9 +21,9 @@ string pronounce(int number) {
     string error = "грешка"; // TODO: exception handling
     int digitsCount = numberAsString.size();
     int rest;
+
     if (digitsCount == 4) {
         pronunciation += "хиляда";
-        return pronunciation;
     } else if (digitsCount == 3) {
         switch (numberAsString[0] - '0') {
             case 1:
@@ -83,12 +84,13 @@ string pronounce(int number) {
 }
 
 int main() {
+
     int number;
     do {
         number = takeInput("number");
     } while (number < 0 || number > 1000);
 
     string pronunciation = pronounce(number);
-
     cout << pronunciation << endl;
+
 }

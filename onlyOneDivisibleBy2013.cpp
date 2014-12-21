@@ -18,6 +18,7 @@ int takeInput(string varName) {
 }
 
 int main() {
+
     int a;
     int b;
     a = takeInput("a");
@@ -29,5 +30,4 @@ int main() {
         cout << "не\n";
     }
 
-    return 0;
 }
