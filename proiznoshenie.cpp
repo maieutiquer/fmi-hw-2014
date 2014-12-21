@@ -14,10 +14,8 @@ string pronounce(int number) {
     string pronunciation = "";
     string space = " ";
     string numbersAsWords[10] = {
-        "нула", "едно", "две",
-        "три", "четири", "пет",
-        "шест", "седем", "осем",
-        "девет",
+        "нула", "едно", "две", "три", "четири",
+        "пет", "шест", "седем", "осем", "девет",
     };
     string error = "грешка"; // TODO: exception handling
     int digitsCount = numberAsString.size();
@@ -28,20 +26,19 @@ string pronounce(int number) {
     } else if (digitsCount == 3) {
         switch (numberAsString[0] - '0') {
             case 1:
-                pronunciation += "сто" + space;
+                pronunciation += "сто";
                 break;
             case 2:
             case 3:
-                pronunciation += numbersAsWords[numberAsString[0] - '0']
-                    + "ста" + space;
+                pronunciation += numbersAsWords[numberAsString[0] - '0'] + "ста";
                 break;
             default:
-                pronunciation += numbersAsWords[numberAsString[0] - '0']
-                    + "стотин" + space;
+                pronunciation += numbersAsWords[numberAsString[0] - '0'] + "стотин";
                 break;
         }
         rest = number % 100;
         if (rest != 0) {
+            pronunciation += space;
             if (number % 10 == 0 || rest < 20) {
                 pronunciation += "и" + space;
             }
@@ -51,37 +48,36 @@ string pronounce(int number) {
         if (number >= 20) {
             switch (numberAsString[0] - '0') {
                 case 2:
-                    pronunciation += "двадесет" + space;
+                    pronunciation += "двадесет";
                     break;
                 default:
-                    pronunciation += numbersAsWords[numberAsString[0] - '0']
-                        + "десет" + space;
+                    pronunciation += numbersAsWords[numberAsString[0] - '0'] + "десет";
                     break;
             }
             rest = number % 10;
             if (rest != 0) {
+                pronunciation += space;
                 pronunciation += "и" + space;
                 pronunciation += pronounce(rest);
             }
         } else {
             switch (numberAsString[1] - '0') {
                 case 0:
-                    pronunciation += "десет" + space;
+                    pronunciation += "десет";
                     break;
                 case 1:
-                    pronunciation += "единадесет" + space;
+                    pronunciation += "единадесет";
                     break;
                 case 2:
-                    pronunciation += "дванадесет" + space;
+                    pronunciation += "дванадесет";
                     break;
                 default:
-                    pronunciation += numbersAsWords[numberAsString[1] - '0']
-                        + "надесет" + space;
+                    pronunciation += numbersAsWords[numberAsString[1] - '0'] + "надесет";
                     break;
             }
         }
     } else if (digitsCount == 1) {
-        pronunciation += numbersAsWords[numberAsString[0] - '0'] + space;
+        pronunciation += numbersAsWords[numberAsString[0] - '0'];
     }
     return pronunciation;
 }
