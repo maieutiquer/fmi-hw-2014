@@ -1,5 +1,4 @@
 #include <iostream>
-#include <cmath>
 
 using namespace std;
 
@@ -12,7 +11,7 @@ int takeInput(string varName) {
 }
 
 double square(double x) {
-    return pow(x, 2);
+    return x*x;
 }
 
 bool isInCircle(double pointX, double pointY,
@@ -32,15 +31,15 @@ int main() {
 
     pointX = takeInput("point X");
     pointY = takeInput("point Y");
-    bool pointInFigure = (pointX <= 2
+    bool pointInFigure = (pointY <= -2
             &&  isInCircle(pointX, pointY, circlesCenterX, circlesCenterY, circle1Radius))
             || (isInCircle(pointX, pointY, circlesCenterX, circlesCenterY, circle2Radius)
             && !isInCircle(pointX, pointY, circlesCenterX, circlesCenterY, circle3Radius));
 
     if (pointInFigure) {
-        cout << "Yes, it's inside." << endl;
+        cout << "Yes, it's inside!" << endl;
     } else {
-        cout << "No, it's not inside." << endl;
+        cout << "No, it's not inside..." << endl;
     }
 
 }
