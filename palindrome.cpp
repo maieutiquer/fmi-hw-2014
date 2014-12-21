@@ -25,11 +25,10 @@ int main() {
     int number;
     number = takeInput("number");
 
-    // TODO: change messege text
     if (isPalindrome(number)) {
-        cout << "MESSAGE_TRUE\n";
+        cout << number << " is a palindrome.\n";
     } else {
-        cout << "MESSAGE_FALSE\n";
+        cout << number << " is not a palindrome.\n";
     }
 
     return 0;
