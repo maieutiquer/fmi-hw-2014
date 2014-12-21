@@ -10,23 +10,45 @@ int takeInput(string varName) {
     return input;
 }
 
-int takeDimension() {
-    int dimension;
+int takeArraySize() {
+    int arraySize;
     do {
-        dimension = takeInput("dimension");
-    } while (dimension < 10 || dimension > 20);
-    return dimension;
+        arraySize = takeInput("array size");
+    } while (arraySize < 10 || arraySize > 20);
+    return arraySize;
 }
 
-void fillArray(int array[], int dimension) {
-    for (int i = 0; i < dimension; i++) {
+int countTotalDigits(int array[], int arraySize) {
+    int totalDigits = 0;
+    for (int i = 0; i < arraySize; i++) {
+        totalDigits += to_string(array[i]).size();
+    }
+    return totalDigits;
+}
+
+void fillArray(int array[], int arraySize) {
+    for (int i = 0; i < arraySize; i++) {
         array[i] = takeInput("array[" + to_string(i) + "]");
     }
 }
 
-int countOccurences(int number, int array[], int dimension) {
+void splitArrayOfIntsToDigits(
+        int arrayOfInts[], int arraySize,
+        int arrayOfDigits[]) {
+    int digitIndex = 0;
+    for (int numberIndex = 0; numberIndex < arraySize; numberIndex++) {
+        string numberAsString = to_string(arrayOfInts[numberIndex]);
+        int numberLength = numberAsString.length();
+        for (int i = 0; i < numberLength; i++) {
+            arrayOfDigits[digitIndex] = numberAsString[i] - '0';
+            digitIndex++;
+        }
+    }
+}
+
+int countOccurences(int number, int array[], int arraySize) {
     int counter = 0;
-    for (int i = 0; i < dimension; i++) {
+    for (int i = 0; i < arraySize; i++) {
         if (array[i] == number) {
             counter++;
         }
@@ -34,49 +56,59 @@ int countOccurences(int number, int array[], int dimension) {
     return counter;
 }
 
-int findMostPopular(int array[], int dimension) {
-    int mostPopular = 0;
+int findMostPopularDigit(int array[], int arraySize) {
+    int mostPopularDigit = 0;
     int mostOccurences = 0;
-    int alreadyCheckedNumbers[dimension];
-    for (int i = 0; i < dimension; i++) {
-        bool isAlreadyChecked = countOccurences(array[i], alreadyCheckedNumbers, dimension);
+    int alreadyCheckedDigits[arraySize];
+    for (int i = 0; i < arraySize; i++) {
+        bool isAlreadyChecked = countOccurences(array[i], alreadyCheckedDigits, arraySize);
         if (!isAlreadyChecked) {
-            int occurences = countOccurences(array[i], array, dimension);
+            int occurences = countOccurences(array[i], array, arraySize);
             if (occurences > mostOccurences) {
                 mostOccurences = occurences;
-                mostPopular = array[i];
-            } else if (occurences == mostOccurences && array[i] < mostPopular) {
-                mostPopular = array[i];
+                mostPopularDigit = array[i];
+            } else if (occurences == mostOccurences && array[i] < mostPopularDigit) {
+                mostPopularDigit = array[i];
             }
-            alreadyCheckedNumbers[i] = array[i];
+            alreadyCheckedDigits[i] = array[i];
         }
     }
-    return mostPopular;
+    return mostPopularDigit;
 }
 
 bool hasEvenNumberOfDigits(int number) {
     return (to_string(number).size() % 2 == 0);
 }
 
-void printNumbersWithEvenNumberOfDigits(int array[], int dimension) {
-    for (int i = dimension - 1; i >= 0; i--) {
+void printNumbersWithEvenNumberOfDigits(int array[], int arraySize) {
+    for (int i = arraySize - 1; i >= 0; i--) {
         if (hasEvenNumberOfDigits(array[i])) {
             cout << array[i] << endl;
         }
     }
 }
 
+void printArrayOfInts(int array) {
+
+}
+
 int main() {
+
     int mostPopular;
-    int dimension = takeDimension();
-    int array[dimension];
+    int arraySize = takeArraySize();
+    int array[arraySize];
+    int totalDigits = countTotalDigits(array, arraySize);
+    int arrayOfDigits[totalDigits];
 
-    fillArray(array, dimension);
+    fillArray(array, arraySize);
 
-    mostPopular = findMostPopular(array, dimension);
+    splitArrayOfIntsToDigits(array, arraySize, arrayOfDigits);
+
+    mostPopular = findMostPopularDigit(arrayOfDigits, totalDigits);
 
     cout << "Most popular: " << mostPopular << endl;
 
     cout << "Numbers with even number of digits: " << endl;
-    printNumbersWithEvenNumberOfDigits(array, dimension);
+    printNumbersWithEvenNumberOfDigits(array, arraySize);
+
 }
