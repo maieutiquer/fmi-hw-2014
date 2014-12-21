@@ -4,8 +4,8 @@ using namespace std;
 
 
 bool hasExactlyThreeDigits(int number) {
-    string stringRepresentationOfNumber = to_string(number);
-    int numberLength = stringRepresentationOfNumber.length();
+    string numberAsString = to_string(number);
+    int numberLength = numberAsString.length();
     if (numberLength == 3) {
         return true;
     } else {
@@ -14,10 +14,10 @@ bool hasExactlyThreeDigits(int number) {
 }
 
 bool hasZero(int number) {
-    string stringRepresentationOfNumber = to_string(number);
-    int numberLength = stringRepresentationOfNumber.length();
+    string numberAsString = to_string(number);
+    int numberLength = numberAsString.length();
     for (int i = 0; i < numberLength; i++) {
-        if (stringRepresentationOfNumber[i] == '0') {
+        if (numberAsString[i] == '0') {
             return true;
         }
     }
@@ -28,10 +28,10 @@ bool hasZero(int number) {
 * Checks if a number is divisible by each of its digits.
 */
 bool multipleOfOwnDigits(int number) {
-    string stringRepresentationOfNumber = to_string(number);
-    int numberLength = stringRepresentationOfNumber.length();
+    string numberAsString = to_string(number);
+    int numberLength = numberAsString.length();
     for (int i = 0; i < numberLength; i++) {
-        if (number % (stringRepresentationOfNumber[i] - '0') != 0) {
+        if (number % (numberAsString[i] - '0') != 0) {
             return false;
         }
     }
@@ -39,21 +39,21 @@ bool multipleOfOwnDigits(int number) {
 }
 
 int sumOfDigits(int number) {
-    string stringRepresentationOfNumber = to_string(number);
-    int numberLength = stringRepresentationOfNumber.length();
+    string numberAsString = to_string(number);
+    int numberLength = numberAsString.length();
     int sum = 0;
     for (int i = 0; i < numberLength; i++) {
-        sum += stringRepresentationOfNumber[i] - '0';
+        sum += numberAsString[i] - '0';
     }
     return sum;
 }
 
 int productOfDigits(int number) {
-    string stringRepresentationOfNumber = to_string(number);
-    int numberLength = stringRepresentationOfNumber.length();
+    string numberAsString = to_string(number);
+    int numberLength = numberAsString.length();
     int product = 1;
     for (int i = 0; i < numberLength; i++) {
-        product *= stringRepresentationOfNumber[i] - '0';
+        product *= numberAsString[i] - '0';
     }
     return product;
 }
@@ -69,7 +69,7 @@ int main() {
     int number;
     do {
         number = takeInput("a three-digit number that has no zero in its digits");
-    } while (hasExactlyThreeDigits(number) && hasZero(number));
+    } while (!hasExactlyThreeDigits(number) || hasZero(number));
 
     if (multipleOfOwnDigits(number)) {
         cout << "Yes " << sumOfDigits(number) << "\n";
