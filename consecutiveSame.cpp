@@ -37,9 +37,11 @@ bool hasConsecutiveSameNumbers(int array[], int dimension) {
 }
 
 int main() {
-    int dimension = takeDimension();
-    int array[dimension];
 
+    int dimension
+    dimension = takeDimension();
+
+    int array[dimension];
     fillArray(array, dimension);
 
     if (hasConsecutiveSameNumbers(array, dimension)) {
@@ -47,4 +49,5 @@ int main() {
     } else {
         cout << "No" << endl;
     }
+
 }
