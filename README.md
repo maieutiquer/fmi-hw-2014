@@ -27,3 +27,12 @@ Task 2 b) - [consecutiveSame.cpp](consecutiveSame.cpp)
 Task 3 a) and b) - [mostPopular.cpp](mostPopular.cpp)
 
 Task 4 a) and b) - [sortHalves.cpp](sortHalves.cpp)
+
+Homework 3
+----------
+
+Task 1 - [matrixElementsOperations.cpp](matrixElementsOperations.cpp)
+
+Task 2 - [magicSquare.cpp](magicSquare.cpp)
+
+
