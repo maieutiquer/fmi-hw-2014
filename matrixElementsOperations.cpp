@@ -11,7 +11,7 @@ int takeInput(string varName) {
 }
 
 void fillSquareMatrix(int matrixSize, void *matrixArg) {
-    double (*matrix)[matrixSize] = (double (*)[matrixSize]) matrixArg;
+    int (*matrix)[matrixSize] = (int (*)[matrixSize]) matrixArg;
 
     for (int i = 0; i < matrixSize; i++) {
         for (int j = 0; j < matrixSize; j++) {
@@ -21,7 +21,7 @@ void fillSquareMatrix(int matrixSize, void *matrixArg) {
 }
 
 void printSquareMatrix(int matrixSize, void *matrixArg) {
-    double (*matrix)[matrixSize] = (double (*)[matrixSize]) matrixArg;
+    int (*matrix)[matrixSize] = (int (*)[matrixSize]) matrixArg;
 
     for (int i = 0; i < matrixSize; i++) {
         cout << "[ ";
@@ -33,7 +33,7 @@ void printSquareMatrix(int matrixSize, void *matrixArg) {
 }
 
 int getSumOfTopAndBottomTriangles(int matrixSize, void *matrixArg) {
-    double (*matrix)[matrixSize] = (double (*)[matrixSize]) matrixArg;
+    int (*matrix)[matrixSize] = (int (*)[matrixSize]) matrixArg;
     int sum = 0;
 
     for (int i = 0; i < matrixSize; i++) {
@@ -48,7 +48,7 @@ int getSumOfTopAndBottomTriangles(int matrixSize, void *matrixArg) {
 }
 
 int getSumOfDiagonalAboveMain(int matrixSize, void *matrixArg) {
-    double (*matrix)[matrixSize] = (double (*)[matrixSize]) matrixArg;
+    int (*matrix)[matrixSize] = (int (*)[matrixSize]) matrixArg;
     int sum = 0;
 
     for (int i = 0; i < matrixSize - 1; i++) {
@@ -58,7 +58,7 @@ int getSumOfDiagonalAboveMain(int matrixSize, void *matrixArg) {
 }
 
 int getProductOfDiagonalBelowSec(int matrixSize, void *matrixArg) {
-    double (*matrix)[matrixSize] = (double (*)[matrixSize]) matrixArg;
+    int (*matrix)[matrixSize] = (int (*)[matrixSize]) matrixArg;
     int product = 1;
 
     for (int i = 0; i < matrixSize - 1; i++) {
